@@ -1,0 +1,16 @@
+CACHE MANIFEST
+# Version 45
+
+CACHE:
+# Defines resources to be cached:
+client.js
+cobi-style.css
+edit.js
+localization.js
+newsapi.js
+picker.js
+style.css
+swiper.js
+
+NETWORK:
+*

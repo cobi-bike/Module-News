@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html manifest="appcache.manifest" lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>News</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="cobi-style.css" rel="stylesheet">
+</head>
+<body>
+    
+  <div id="experience">
+    <div class="input-field col s12" id="categoryPickerContainer" style="margin-left:20px; width:140px; z-Index:6; float:left; position: absolute; bottom: 0px;">
+      <select id="categoryPicker" onchange="didPickCategory()"></select>
+    </div>      
+    <div class="input-field col s12" id="sourcePickerContainer" style="margin-left:20px; width:250px; z-Index:5; float:left; position: absolute; bottom: 0px; left: 150px;">
+        <select id="sourcePicker" multiple onchange="didPickSources()"></select> 
+    </div>
+    <div class="swiper-container" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0;">    
+      <div class="swiper-wrapper" id="item-container"></div>
+      <div class="swiper-pagination"></div>     
+    </div> 
+  </div>
+  <div id="edit" class="content gray">
+      <p class="content-padded text-center"><b>News</b> reads latest headlines & adds articles to your reading list.</p>
+      <ul class="table-view">
+        <li class="table-view-cell">Read article description on tap<label class="toggle"><input id="articleDescriptionToggle" type="checkbox" unchecked><div class="slider-circle round"></div></label></li>
+      </ul>
+      <ul class="table-view">
+        <li class="table-view-cell">Jump to next category<label class="toggle"><input id="jumpCategoryToggle" type="checkbox" checked><div class="slider-circle round"></div></label></li>
+      </ul>    
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.min.js"></script>
+  <script src="https://unpkg.com/i18next/i18next.min.js"></script>
+  <script src="https://cdn.cobi.bike/cobi.js/0.34.1/cobi.js"></script>
+  <script src="localization.js"></script>
+  <script src="edit.js"></script>
+  <script src="newsapi.js"></script>
+  <script src="picker.js"></script>
+  <script src="swiper.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
