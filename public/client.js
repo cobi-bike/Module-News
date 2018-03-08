@@ -6,8 +6,7 @@ COBI.init('token');
 COBI.devkit.overrideThumbControllerMapping.write(true);
 COBI.app.clockVisible.write(false);
 
-/* Init Experience & Overview */
-
+// Initialize slider if in experience or overview mode (therefore not in edit menu)
 if (COBI.parameters.state() == COBI.state.experience ||
     COBI.parameters.state() == COBI.state.overview) {
   
@@ -19,6 +18,7 @@ if (COBI.parameters.state() == COBI.state.experience ||
   reloadContents();
   populateSourcePicker();
   
+  // Apply material design to select pick ups
   $(document).ready(function() {
     $('select').material_select();
   });  
@@ -29,14 +29,14 @@ if (COBI.parameters.state() == COBI.state.experience ||
 function buildArticles(jsonString) {
   var json = JSON.parse(jsonString);
   for (var i = 0; i < json.articles.length; i++) {
-      var article = json.articles[i];
-      var index = articles.length;
-      article.sourceName = sourceNameById(json.source);
-      articles.push(article)
-      if(article.title.length > 85) {
+    var article = json.articles[i];
+    var index = articles.length;
+    article.sourceName = sourceNameById(json.source);
+    articles.push(article)
+    if(article.title.length > 85) {
       article.title = article.title.substring(0,84)+"...";
-  }
-      createSwiperItem(index, article.title, article.description, article.urlToImage);
+    }
+    createSwiperItem(index, article.title, article.description, article.urlToImage);
   }
   swiper.init();
   selectArticle(0);
@@ -116,19 +116,19 @@ function nextStep() {
 
   // Read Title
   if (this.step == 1) {
-      console.log("Read Title: " + article.title);
-      COBI.app.textToSpeech.write({"content" : article.title, "language" : i18next.language});
+    console.log("Read Title: " + article.title);
+    COBI.app.textToSpeech.write({"content" : article.title, "language" : i18next.language});
   }
   // Read Description
   else if (this.step == 2) {
-      console.log("Read Description: " + article.description);
-      COBI.app.textToSpeech.write({"content" : article.description, "language" : i18next.language});
+    console.log("Read Description: " + article.description);
+    COBI.app.textToSpeech.write({"content" : article.description, "language" : i18next.language});
   }
   // Add to Read Later
   else if (this.step == 3) {
-      console.log("Read Later: " + article.url);
-      COBI.app.readLater.write({"title" : article.title, "url" : article.url})
-      COBI.app.textToSpeech.write({"content" : i18next.t('read-later-tts'), "language" : i18next.language});
-      Materialize.toast(i18next.t('read-later'), 5000, 'rounded white');
+    console.log("Read Later: " + article.url);
+    COBI.app.readLater.write({"title" : article.title, "url" : article.url})
+    COBI.app.textToSpeech.write({"content" : i18next.t('read-later-tts'), "language" : i18next.language});
+    Materialize.toast(i18next.t('read-later'), 5000, 'rounded white');
   }
 }

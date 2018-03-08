@@ -56,13 +56,13 @@ function fetchNews(source, callback) {
   console.log("Fetch News: " + source);
   var request = new XMLHttpRequest();
   request.onreadystatechange = function() {
-      if (request.readyState === 4) {
-          if (request.status === 200) {
-              callback(request.responseText);
-          } else {
-              console.log("Failed to fetch news for source: " + source + " | Status: " + request.status);
-          }
+    if (request.readyState === 4) {
+      if (request.status === 200) {
+        callback(request.responseText);
+      } else {
+        console.log("Failed to fetch news for source: " + source + " | Status: " + request.status);
       }
+    }
   };
 
   var url = "https://newsapi.org/v1/articles?source="+source+"&apiKey=***REMOVED***";
