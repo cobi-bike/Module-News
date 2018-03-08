@@ -2,6 +2,7 @@ var swiper;
 
 /* User Input */
 
+// Allow swipe actions via arrow keys
 function checkArrowKeys(e) {
   e = e || window.event;
   if (e.keyCode == '38' /* Up */ || e.keyCode == '37' /* Left */ ) prevArticle();
@@ -10,6 +11,7 @@ function checkArrowKeys(e) {
 
 /* Create Swiper */ 
 
+// Create swiper and register events
 function createSwiper() {
   swiper = new Swiper('.swiper-container', {
     pagination: '.swiper-pagination',
@@ -31,6 +33,7 @@ function createSwiper() {
     if (action == 'SELECT') nextStep();
   });
 
+  // Hide and show touch interactive buttons if touch is enabled
   COBI.app.touchInteractionEnabled.subscribe(function(enabled) {
     lastIsRiding = !enabled;
     for (var i = 0; i < articles.length; i++) showHideSwiperItemContents(i, lastIsRiding);
@@ -41,7 +44,7 @@ function createSwiper() {
 }
 
 /* Dynamic Item Creation */
-
+// Create new item for slider with title, description and background image
 function createSwiperItem(index, title, description, imageUrl) {
   var item = document.createElement('div');
   item.setAttribute('class', 'swiper-slide');
@@ -66,6 +69,7 @@ function createSwiperItem(index, title, description, imageUrl) {
   document.getElementById('item-container').appendChild(item);
 }
 
+// Shows and hides interactive buttons if bike has stopped
 function showHideSwiperItemContents(index, isRiding) {
   var slide = document.getElementById('slide-'+index);
   var category = i18next.t(categoryPicker.options[categoryPicker.selectedIndex].value);

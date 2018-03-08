@@ -1,4 +1,4 @@
-// Localization
+// Initialize localization with language set by cobi parameter
 i18next.init({
   lng: COBI.parameters.language(),
   resources: {

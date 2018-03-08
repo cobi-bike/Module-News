@@ -1,22 +1,26 @@
 var categoryPicker = document.getElementById('categoryPicker');
 var sourcePicker = document.getElementById('sourcePicker');
 
+// Returns array of categories by language identifier (e.g. "de-DE")
 function getCategoriesByLanguage(language) {
   return sources[language.substr(0,2)];
 }
 
+// Gets called when user picks category
 function didPickCategory() {
   clearContents();
   reloadContents();
   populateSourcePicker();
 }
 
+// Get called when user picks news source
 function didPickSources() {
   saveSourcePreferences();
   clearContents();
   reloadContents();
 }
 
+// Fills category picker with all categories in the user's language 
 function populateCategoryPicker() {
   var categories = getCategoriesByLanguage(i18next.language);
   removeAllOptions(categoryPicker);
@@ -30,6 +34,7 @@ function populateCategoryPicker() {
   $('select').material_select();
 }
 
+// Fills news source picker with all sources for the selected category
 function populateSourcePicker() {
   var categorySources = getCategoriesByLanguage(i18next.language)[categoryPicker.selectedIndex].sources;
   removeAllOptions(sourcePicker);
@@ -48,6 +53,7 @@ function populateSourcePicker() {
   $('select').material_select();
 }
 
+// Initializes category picker with last picked category from local storage
 function restoreCategoryPicker() {
   var lastSelectedCategory = localStorage.getItem('category');
   var index = [].map.call(categoryPicker, function(option) {
@@ -57,6 +63,7 @@ function restoreCategoryPicker() {
   if (index > -1) categoryPicker.selectedIndex = index;
 }
 
+// Rotates category
 function selectNextCategory() {
   if (categoryPicker.selectedIndex < categoryPicker.options.length-1) {
     categoryPicker.selectedIndex = categoryPicker.selectedIndex+1;        
@@ -67,7 +74,7 @@ function selectNextCategory() {
 }
 
 /* Preferences */
-
+// Creates local storage entries for the visibility of each news outlet
 function initSourcePreferences() {
   for (var locale in sources) {
     for (var i = 0; i < sources[locale].length; i++) {
@@ -81,18 +88,21 @@ function initSourcePreferences() {
   }  
 }
 
+// Stores selected news outlets in local storage
 function saveSourcePreferences() {
   for (var i = 0; i < sourcePicker.options.length; i++) {
     localStorage.setItem(sourcePicker.options[i].value, JSON.stringify(sourcePicker.options[i].selected));
   }
 }
 
+// Checks if news outlet is enabled in local storage
 function getSourceEnabled(source) {
   return JSON.parse(localStorage.getItem(source)) === true;
 }
 
 /* Helper Methods */
 
+// Removes all elements of select picker 
 function removeAllOptions(select) {
     var i;
     for(i = select.options.length - 1 ; i >= 0 ; i--) {
@@ -100,6 +110,7 @@ function removeAllOptions(select) {
     }
 }
 
+// Removes element by id from select picker
 function sourceNameById(sourceId) {
   for (var i = 0; i < sourcePicker.options.length; i++) {
     if (sourcePicker.options[i].value == sourceId) return sourcePicker.options[i].innerHTML;

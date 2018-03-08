@@ -1,4 +1,4 @@
-// Fixed News API Sources
+// Hardcoded german and english news outlets with name, id and default visibility
 var sources = {
   "en": [
     {
@@ -52,6 +52,7 @@ var sources = {
   ]
 };
 
+// Fetches newsapi with source identifier and calls callback with json data
 function fetchNews(source, callback) {
   console.log("Fetch News: " + source);
   var request = new XMLHttpRequest();

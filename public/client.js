@@ -26,6 +26,7 @@ if (COBI.parameters.state() == COBI.state.experience ||
 
 /* Swiper Contents */
 
+// Gets called with json data of article and adds a slider item
 function buildArticles(jsonString) {
   var json = JSON.parse(jsonString);
   for (var i = 0; i < json.articles.length; i++) {
@@ -42,6 +43,7 @@ function buildArticles(jsonString) {
   selectArticle(0);
 }
 
+// Load and display content for news category
 function reloadContents() {
   var category = categoryPicker.options[categoryPicker.selectedIndex].value;
   
@@ -57,6 +59,7 @@ function reloadContents() {
   }
 }
 
+// Remove slider items
 function clearContents() {
   var contentContainer = document.getElementById('item-container');
   while (contentContainer.firstChild) {
@@ -69,6 +72,7 @@ function clearContents() {
 
 /* Article & Category Browsing */
 
+// Jumps to next article or category depending on settings
 function nextArticle() {
   if (this.index < articles.length-1) {
     selectArticle(this.index + 1);
@@ -79,12 +83,14 @@ function nextArticle() {
   }
 }
 
+// Jumps to previous article
 function prevArticle() {
   if (this.index > 0) {
     selectArticle(this.index - 1);
   }
 }
 
+// Swipes to desired article id
 function selectArticle(index) {
   if (this.index != index) {
     console.log("Select Article: " + index + " / Riding: " + lastIsRiding);
@@ -99,6 +105,7 @@ function selectArticle(index) {
   }
 }
 
+// Reads article title, descripton or adds it to reading list depending on state and setting
 function nextStep() {
   var article = articles[index];
   
@@ -124,7 +131,7 @@ function nextStep() {
     console.log("Read Description: " + article.description);
     COBI.app.textToSpeech.write({"content" : article.description, "language" : i18next.language});
   }
-  // Add to Read Later
+  // Add to Read Later List on Safari
   else if (this.step == 3) {
     console.log("Read Later: " + article.url);
     COBI.app.readLater.write({"title" : article.title, "url" : article.url})
