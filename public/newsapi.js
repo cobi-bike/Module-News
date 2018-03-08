@@ -66,7 +66,8 @@ function fetchNews(source, callback) {
     }
   };
 
-  var url = "https://newsapi.org/v1/articles?source="+source+"&apiKey=***REMOVED***";
+  // Request news over backend proxy
+  var url = "news/" +  source;
   request.open("GET", url, true);
   request.send(null);
 }
