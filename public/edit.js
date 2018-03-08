@@ -11,31 +11,47 @@ if (COBI.parameters.state() == COBI.state.edit) {
 
 // Manage Settings
 
-// Set Defaults
-
-if (!localStorage.getItem(localStorageKeyArticleDescription)) localStorage.setItem(localStorageKeyArticleDescription, JSON.stringify(false));
-if (!localStorage.getItem(localStorageKeyJumpCategory)) localStorage.setItem(localStorageKeyJumpCategory, JSON.stringify(true));
 
 // Setting: Article Description
 
 var articleDescriptionToggle = document.getElementById("articleDescriptionToggle");
 articleDescriptionToggle.checked = getArticleDescriptionSetting();
 articleDescriptionToggle.onchange = function() {
-  localStorage.setItem(localStorageKeyArticleDescription, JSON.stringify(articleDescriptionToggle.checked));
+  setArticleDescriptionSetting(articleDescriptionToggle.checked);
 };
 
 function getArticleDescriptionSetting() {
-  return JSON.parse(localStorage.getItem(localStorageKeyArticleDescription));
+  var value = JSON.parse(localStorage.getItem(localStorageKeyArticleDescription));
+  if (value === null) {
+    return false;
+  } else {
+    return value;
+  }
 } 
+
+function setArticleDescriptionSetting(value) {
+  localStorage.setItem(localStorageKeyArticleDescription, JSON.stringify(value));
+} 
+
+
 
 // Setting: Jump Category
 
 var jumpCategoryToggle = document.getElementById("jumpCategoryToggle");
 jumpCategoryToggle.checked = getJumpCategorySetting();
 jumpCategoryToggle.onchange = function() {
-  localStorage.setItem(localStorageKeyJumpCategory, JSON.stringify(jumpCategoryToggle.checked));
+  setJumpCategorySetting(jumpCategoryToggle.checked);
 };
 
 function getJumpCategorySetting() {
-  return JSON.parse(localStorage.getItem(localStorageKeyJumpCategory));
+  var value = JSON.parse(localStorage.getItem(localStorageKeyJumpCategory));
+  if (value === null) {
+    return true;
+  } else {
+    return value;
+  }
+} 
+
+function setJumpCategorySetting(value) {
+  localStorage.setItem(localStorageKeyJumpCategory, JSON.stringify(value));
 } 
