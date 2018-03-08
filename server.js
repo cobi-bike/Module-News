@@ -2,6 +2,9 @@
 var express = require('express');
 var app = express();
 
+// Set port from environment variable or default
+var port = process.env.PORT || 3000;
+
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
 
@@ -11,6 +14,6 @@ app.get("/", function (request, response) {
 });
 
 // listen for requests :)
-var listener = app.listen(process.env.PORT, function () {
+var listener = app.listen(port, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
