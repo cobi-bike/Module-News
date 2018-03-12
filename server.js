@@ -14,6 +14,7 @@ app.get('/', function (req, resp) {
   resp.sendFile(__dirname + '/views/index.html');
 });
 
+// Serve a proxy to the newsapi backend
 app.get('/news/:source', function (req, resp) {
   var newsapi_key = process.env.NEWSAPI_KEY;
   var url = 'https://newsapi.org/v1/articles?source='+req.params.source+'&apiKey='+newsapi_key;

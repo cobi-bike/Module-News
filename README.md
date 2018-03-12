@@ -28,11 +28,20 @@ npm install
 Follow the [instructions](https://github.com/cobi-bike/DevKit#-test-your-module) to install the COBI.bike Google Chrome Simulator and get familiar with the basics of app development on the COBI plattform.
 
 
-### Step 3: Run Node.js server
+### Step 3: Create a twilio account
+
+This app relies on [newsapi.org](https://newsapi.org/register) to poll the latest news from various news outlets. Create an account and retrieve your api key.
+
+### Step 4: Set environment variables
+
+Set the environment variable `NEWSAPI_KEY` with your credentials for newsapi.org
+
+
+### Step 5: Run Node.js server
 
 The app is accessible under [localhost:8888](http://localhost:8888/) after starting the Node.js server with:
 ``` bash
-PORT=8888 node server.js
+PORT=8888 NEWSAPI_KEY=... node server.js
 ```  
 The settings menu can be accessed with the [?state=edit](http://localhost:8888/?state=edit) suffix.
 
