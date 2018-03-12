@@ -7,9 +7,7 @@ COBI.devkit.overrideThumbControllerMapping.write(true);
 COBI.app.clockVisible.write(false);
 
 // Initialize slider if in experience or overview mode (therefore not in edit menu)
-if (COBI.parameters.state() == COBI.state.experience ||
-    COBI.parameters.state() == COBI.state.overview) {
-  
+if (COBI.parameters.state() == COBI.state.experience || COBI.parameters.state() == COBI.state.overview) {
   createSwiper();
   initSourcePreferences();
   populateCategoryPicker();
@@ -17,11 +15,11 @@ if (COBI.parameters.state() == COBI.state.experience ||
   clearContents();
   reloadContents();
   populateSourcePicker();
-  
+
   // Apply material design to select pick ups
   $(document).ready(function() {
     $('select').material_select();
-  });  
+  });
 }
 
 /* Swiper Contents */
@@ -33,9 +31,9 @@ function buildArticles(jsonString) {
     var article = json.articles[i];
     var index = articles.length;
     article.sourceName = sourceNameById(json.source);
-    articles.push(article)
-    if(article.title.length > 85) {
-      article.title = article.title.substring(0,84)+"...";
+    articles.push(article);
+    if (article.title.length > 85) {
+      article.title = article.title.substring(0, 84) + '...';
     }
     createSwiperItem(index, article.title, article.description, article.urlToImage);
   }
@@ -46,15 +44,15 @@ function buildArticles(jsonString) {
 // Load and display content for news category
 function reloadContents() {
   var category = categoryPicker.options[categoryPicker.selectedIndex].value;
-  
-  localStorage.setItem('category',category);
-  console.log("Reload Contents: " + i18next.language + " with category " + category);
-  
+
+  localStorage.setItem('category', category);
+  console.log('Reload Contents: ' + i18next.language + ' with category ' + category);
+
   var localSources = getCategoriesByLanguage(i18next.language)[categoryPicker.selectedIndex].sources;
-  
+
   for (var i = 0; i < localSources.length; i++) {
     if (getSourceEnabled(localSources[i].key)) {
-      fetchNews(localSources[i].key, buildArticles);  
+      fetchNews(localSources[i].key, buildArticles);
     }
   }
 }
@@ -66,7 +64,7 @@ function clearContents() {
     contentContainer.removeChild(contentContainer.firstChild);
   }
   articles = [];
-  step = 0; 
+  step = 0;
   index = -1;
 }
 
@@ -74,7 +72,7 @@ function clearContents() {
 
 // Jumps to next article or category depending on settings
 function nextArticle() {
-  if (this.index < articles.length-1) {
+  if (this.index < articles.length - 1) {
     selectArticle(this.index + 1);
   } else if (getJumpCategorySetting()) {
     selectNextCategory();
@@ -93,7 +91,7 @@ function prevArticle() {
 // Swipes to desired article id
 function selectArticle(index) {
   if (this.index != index) {
-    console.log("Select Article: " + index + " / Riding: " + lastIsRiding);
+    console.log('Select Article: ' + index + ' / Riding: ' + lastIsRiding);
 
     this.index = index;
     this.step = 0;
@@ -108,34 +106,32 @@ function selectArticle(index) {
 // Reads article title, descripton or adds it to reading list depending on state and setting
 function nextStep() {
   var article = articles[index];
-  
+
   // Loop through steps
   if (this.step >= 3) this.step = 0;
-  
+
   // Next step
   this.step++;
-  
+
   // Should Read Description?
   if (this.step == 2 && !getArticleDescriptionSetting()) {
     // Nope -> Go to Reading List
-    this.step = 3;    
+    this.step = 3;
   }
 
   // Read Title
   if (this.step == 1) {
-    console.log("Read Title: " + article.title);
-    COBI.app.textToSpeech.write({"content" : article.title, "language" : i18next.language});
-  }
-  // Read Description
-  else if (this.step == 2) {
-    console.log("Read Description: " + article.description);
-    COBI.app.textToSpeech.write({"content" : article.description, "language" : i18next.language});
-  }
-  // Add to Read Later List on Safari
-  else if (this.step == 3) {
-    console.log("Read Later: " + article.url);
-    COBI.app.readLater.write({"title" : article.title, "url" : article.url})
-    COBI.app.textToSpeech.write({"content" : i18next.t('read-later-tts'), "language" : i18next.language});
+    console.log('Read Title: ' + article.title);
+    COBI.app.textToSpeech.write({ content: article.title, language: i18next.language });
+  } else if (this.step == 2) {
+    // Read Description
+    console.log('Read Description: ' + article.description);
+    COBI.app.textToSpeech.write({ content: article.description, language: i18next.language });
+  } else if (this.step == 3) {
+    // Add to Read Later List on Safari
+    console.log('Read Later: ' + article.url);
+    COBI.app.readLater.write({ title: article.title, url: article.url });
+    COBI.app.textToSpeech.write({ content: i18next.t('read-later-tts'), language: i18next.language });
     Materialize.toast(i18next.t('read-later'), 5000, 'rounded white');
   }
 }

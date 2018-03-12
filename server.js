@@ -10,18 +10,18 @@ var port = process.env.PORT || 3000;
 app.use(express.static('public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
-app.get('/', function (req, resp) {
+app.get('/', function(req, resp) {
   resp.sendFile(__dirname + '/views/index.html');
 });
 
 // Serve a proxy to the newsapi backend
-app.get('/news/:source', function (req, resp) {
+app.get('/news/:source', function(req, resp) {
   var newsapi_key = process.env.NEWSAPI_KEY;
-  var url = 'https://newsapi.org/v1/articles?source='+req.params.source+'&apiKey='+newsapi_key;
+  var url = 'https://newsapi.org/v1/articles?source=' + req.params.source + '&apiKey=' + newsapi_key;
   request.get(url).pipe(resp);
 });
 
 // listen for requests :)
-var listener = app.listen(port, function () {
+var listener = app.listen(port, function() {
   console.log('Your app is listening on port ' + listener.address().port);
 });

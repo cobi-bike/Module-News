@@ -11,10 +11,9 @@ if (COBI.parameters.state() == COBI.state.edit) {
 
 // Manage Settings
 
-
 // Setting: Article Description
 
-var articleDescriptionToggle = document.getElementById("articleDescriptionToggle");
+var articleDescriptionToggle = document.getElementById('articleDescriptionToggle');
 articleDescriptionToggle.checked = getArticleDescriptionSetting();
 articleDescriptionToggle.onchange = function() {
   setArticleDescriptionSetting(articleDescriptionToggle.checked);
@@ -27,17 +26,15 @@ function getArticleDescriptionSetting() {
   } else {
     return value;
   }
-} 
+}
 
 function setArticleDescriptionSetting(value) {
   localStorage.setItem(localStorageKeyArticleDescription, JSON.stringify(value));
-} 
-
-
+}
 
 // Setting: Jump Category
 
-var jumpCategoryToggle = document.getElementById("jumpCategoryToggle");
+var jumpCategoryToggle = document.getElementById('jumpCategoryToggle');
 jumpCategoryToggle.checked = getJumpCategorySetting();
 jumpCategoryToggle.onchange = function() {
   setJumpCategorySetting(jumpCategoryToggle.checked);
@@ -50,8 +47,8 @@ function getJumpCategorySetting() {
   } else {
     return value;
   }
-} 
+}
 
 function setJumpCategorySetting(value) {
   localStorage.setItem(localStorageKeyJumpCategory, JSON.stringify(value));
-} 
+}
