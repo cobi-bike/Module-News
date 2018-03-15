@@ -3,7 +3,7 @@
 The News DevKit module displays the latest news headlines and allows to add them to your read later list.
 Its part of a collection of Open Source [modules](https://cobi.bike/devkit) for the [COBI.bike](https://cobi.bike) system.
 
-![COBI.bike News App](screenshot.jpeg)
+<img src="screenshot.png" width="500px" alt="COBI.bike News module">
 
 ## Quickstart: Interactive Demo
 
