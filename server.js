@@ -6,6 +6,15 @@ var app = express();
 // Set port from environment variable or default
 var port = process.env.PORT || 3000;
 
+// Set environment variables
+var newsapi_key = process.env.NEWSAPI_KEY;
+
+// If env variables are not set, quit application with error exit code
+if (!newsapi_key) {
+  console.log("Error: Missing environment variables")
+  process.exit(1);
+}
+
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
 
@@ -16,7 +25,6 @@ app.get('/', function(req, resp) {
 
 // Serve a proxy to the newsapi backend
 app.get('/news/:source', function(req, resp) {
-  var newsapi_key = process.env.NEWSAPI_KEY;
   var url = 'https://newsapi.org/v1/articles?source=' + req.params.source + '&apiKey=' + newsapi_key;
   request.get(url).pipe(resp);
 });
