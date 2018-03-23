@@ -82,8 +82,9 @@ input.select-dropdown {
 }
 
 .content-app {
-  position: fixed;
+  position: absolute;
   left: 0;
+  top: 35vh;
   right: 0;
   text-align: center;
   font-familly: 'UniSansBold';
@@ -95,7 +96,7 @@ input.select-dropdown {
   color: #fff !important;
   font-weight: 800;
   font-size: 6.5vw;
-  margin: -20px 10vw auto 10vw !important;
+  margin: auto 10vw auto 10vw !important;
   letter-spacing: 1;
   line-height: 8vw;
 }
