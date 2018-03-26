@@ -114,7 +114,11 @@ function removeAllOptions(select) {
 
 // Removes element by id from select picker
 function sourceNameById(sourceId) {
-  for (var i = 0; i < sourcePicker.options.length; i++) {
-    if (sourcePicker.options[i].value == sourceId) return sourcePicker.options[i].innerHTML;
+  var categories = getCategoriesByLanguage(i18next.language);
+  for (var k = 0; k < categories.length; k++) {
+    var categorySources = categories[k].sources;
+    for (var i = 0; i < categorySources.length; i++) {
+      if (categorySources[i].key == sourceId) return categorySources[i].name;
+    }
   }
 }
