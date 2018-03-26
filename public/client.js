@@ -57,7 +57,9 @@ function reloadContents() {
     }
   }
   // Fetch news for aggregated news outlets
-  fetchNews(selectedSources, buildArticles);
+  if (selectedSources.length > 0) {
+    fetchNews(selectedSources, buildArticles);
+  }
      
 }
 
