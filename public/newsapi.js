@@ -80,7 +80,7 @@ function fetchNews(sources, callback) {
         callback(request.responseText);
       } else {
         console.log('Failed to fetch news for source:Connection to server has failed. ' + ' | Status: ' + request.status);
-        onConnectionError();
+        Materialize.toast(i18next.t('connection-error'), 10000, 'rounded white');
       }
     }
   };
@@ -89,12 +89,4 @@ function fetchNews(sources, callback) {
   var url = 'news/' + sources.join(',');
   request.open('GET', url, true);
   request.send(null);
-}
-
-var alreadyReported = false;
-function onConnectionError() {
-    if (!alreadyReported) {
-      Materialize.toast(i18next.t('connection-error'), 10000, 'rounded white');
-      alreadyReported = true;
-    }
 }
