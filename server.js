@@ -25,7 +25,7 @@ app.get('/', function(req, resp) {
 
 // Serve a proxy to the newsapi backend
 app.get('/news/:source', function(req, resp) {
-  var url = 'https://newsapi.org/v1/articles?source=' + req.params.source + '&apiKey=' + newsapi_key;
+  var url = 'https://newsapi.org/v2/top-headlines?sources=' + req.params.source + '&apiKey=' + newsapi_key;
   request.get(url).pipe(resp);
 });
 

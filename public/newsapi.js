@@ -72,22 +72,21 @@ var sources = {
 };
 
 // Fetches newsapi with source identifier and calls callback with json data
-function fetchNews(source, callback) {
-  console.log('Fetch News: ' + source);
+function fetchNews(sources, callback) {
   var request = new XMLHttpRequest();
   request.onreadystatechange = function() {
     if (request.readyState === 4) {
       if (request.status === 200) {
         callback(request.responseText);
       } else {
-        console.log('Failed to fetch news for source:Connection to server has failed. ' + source + ' | Status: ' + request.status);
+        console.log('Failed to fetch news for source:Connection to server has failed. ' + ' | Status: ' + request.status);
         onConnectionError();
       }
     }
   };
 
   // Request news over backend proxy
-  var url = 'news/' + source;
+  var url = 'news/' + sources.join(',');
   request.open('GET', url, true);
   request.send(null);
 }

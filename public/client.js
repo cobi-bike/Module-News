@@ -30,7 +30,7 @@ function buildArticles(jsonString) {
   for (var i = 0; i < json.articles.length; i++) {
     var article = json.articles[i];
     var index = articles.length;
-    article.sourceName = sourceNameById(json.source);
+    article.sourceName = sourceNameById(article.source.id);
     articles.push(article);
     if (article.title.length > 85) {
       article.title = article.title.substring(0, 84) + '...';
@@ -49,12 +49,16 @@ function reloadContents() {
   console.log('Reload Contents: ' + i18next.language + ' with category ' + category);
 
   var localSources = getCategoriesByLanguage(i18next.language)[categoryPicker.selectedIndex].sources;
+  var selectedSources = [];
 
   for (var i = 0; i < localSources.length; i++) {
     if (getSourceEnabled(localSources[i].key)) {
-      fetchNews(localSources[i].key, buildArticles);
+      selectedSources.push(localSources[i].key);
     }
   }
+  // Fetch news for aggregated news outlets
+  fetchNews(selectedSources, buildArticles);
+     
 }
 
 // Remove slider items
