@@ -40,7 +40,9 @@ var sources = {
     },
     {
       key: 'sport',
-      sources: [{ name: 'BBC Sport', key: 'bbc-sport', defaultOn: true }, { name: 'ESPN', key: 'espn' }]
+      sources: [
+        { name: 'BBC Sport', key: 'bbc-sport', defaultOn: true },
+        { name: 'ESPN', key: 'espn' }]
     }
   ],
   de: [
@@ -75,14 +77,12 @@ var sources = {
 function fetchNews(sources, callback) {
   var request = new XMLHttpRequest();
   request.onreadystatechange = function() {
-    if (request.readyState === 4) {
+    if (request.readyState === XMLHttpRequest.DONE) {
       if (request.status === 200) {
         callback(request.responseText);
       } else {
         console.log('Failed to fetch news for source:Connection to server has failed. ' + ' | Status: ' + request.status);
-        if (request.status === 429) {
-          Materialize.toast(i18next.t('connection-error'), 5000, 'rounded white');
-        }
+        Materialize.toast(i18next.t('connection-error'), 5000, 'rounded white');
       }
     }
   };

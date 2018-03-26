@@ -136,6 +136,6 @@ function nextStep() {
     console.log('Read Later: ' + article.url);
     COBI.app.readLater.write({ title: article.title, url: article.url });
     COBI.app.textToSpeech.write({ content: i18next.t('read-later-tts'), language: i18next.language });
-    Materialize.toast(i18next.t('read-later'), 5000, 'rounded white');
+    Materialize.toast(i18next.t('read-later'), 5 * 1000, 'rounded white');
   }
 }
