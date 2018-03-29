@@ -82,7 +82,7 @@ function fetchNews(sources, callback) {
         callback(request.responseText);
       } else {
         console.log('Failed to fetch news for source: Connection to server has failed. ' + ' | Status: ' + request.status);
-        Materialize.toast(i18next.t('connection-error'), 5000, 'rounded white');
+        Materialize.toast(i18next.t('connection-error'), 5 * 1000, 'rounded white');
       }
     }
   };
