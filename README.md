@@ -12,11 +12,11 @@ The quickest way to test the module via [Glitch.com](https://glitch.com):
 [<img src="https://cdn.cobi.bike/static/devkit-assets/github/open_demo_button.png" width="170px" alt="Open demo button">](https://glitch.com/edit/#!/import/github/cobi-bike/Module-News)
 
 Glitch.com allows you to edit, host and fork Node.js applications for quick prototyping.
-Follow the [installation step 2](#installation-and-setup) and copy the environment variables to the: `.env` file on Glitch.com
+Follow the [installation step 2 to 3](#installation-and-setup) and copy the environment variables to the: `.env` file on Glitch.com
 
 ## Overview
-This module utilizes on [Newsapi.org](https://newsapi.org/register) to poll the latest news from various news outlets.
-The Node.js backend acts as a Newsapi.org proxy and serves a static page to the client, which allows the user to switch between headlines, reads it's description and add's it to his read-later list.
+This module utilizes [Newsapi.org](https://newsapi.org/register) to poll the latest news from various news outlets.
+The Node.js backend acts as a Newsapi.org proxy and serves a static page to the client, which allows the user to switch between headlines, read it's description and add it to his read-later list.
 
 ## Installation and Setup
 
