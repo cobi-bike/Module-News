@@ -56,6 +56,7 @@ function populateSourcePicker() {
 // Initializes category picker with last picked category from local storage
 function restoreCategoryPicker() {
   var lastSelectedCategory = localStorage.getItem('category');
+  // Call array.map on picker element
   var index = [].map
     .call(categoryPicker, function(option) {
       return option.value;
