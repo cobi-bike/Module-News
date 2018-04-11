@@ -45,7 +45,7 @@ function buildArticles(jsonString) {
 function reloadContents() {
   var category = categoryPicker.options[categoryPicker.selectedIndex].value;
 
-  localStorage.setItem('category', category);
+  setLastCategory('category);
   console.log('Reload Contents: ' + i18next.language + ' with category ' + category);
 
   var localSources = getCategoriesByLanguage(i18next.language)[categoryPicker.selectedIndex].sources;

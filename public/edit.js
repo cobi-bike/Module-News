@@ -1,5 +1,6 @@
 var localStorageKeyArticleDescription = 'readlater-articledescription';
 var localStorageKeyJumpCategory = 'readlater-jumpcategory';
+var localStorageKeyCategory = 'category';
 
 // UI Switcher
 
@@ -51,4 +52,13 @@ function getJumpCategorySetting() {
 
 function setJumpCategorySetting(value) {
   localStorage.setItem(localStorageKeyJumpCategory, JSON.stringify(value));
+}
+
+function getLastCategory() {
+  var value = JSON.parse(localStorage.getItem(localStorageKeyCategory));
+  return value;
+}
+
+function setLastCategory(value) {
+  localStorage.setItem(localStorageKeyCategory, JSON.stringify(value));
 }
