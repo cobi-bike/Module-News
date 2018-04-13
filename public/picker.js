@@ -45,7 +45,7 @@ function populateSourcePicker() {
     option.innerHTML = categorySources[i].name;
     // Set default value
     if (getSourceEnabled(categorySource) === null) {
-      setSourceEnabeld(categorySource, categorySources[i].defaultOn);
+      setSourceEnabled(categorySource, categorySources[i].defaultOn === true);
     }
     option.selected = getSourceEnabled(categorySource) === true;
     sourcePicker.appendChild(option);
@@ -84,7 +84,7 @@ function initSourcePreferences() {
       for (var j = 0; j < sources[locale][i].sources.length; j++) {
         var categorySource = sources[locale][i].sources[j];
         if (getSourceEnabled(categorySource.key) === null) {
-          setSourceEnabled(categorySource.key, categorySource.defaultOn);
+          setSourceEnabled(categorySource.key, categorySource.defaultOn === true);
         }
       }
     }
@@ -98,10 +98,6 @@ function saveSourcePreferences() {
   }
 }
 
-// Checks if news outlet is enabled in local storage
-function getSourceEnabled(source) {
-  return JSON.parse(localStorage.getItem(source)) === true;
-}
 
 /* Helper Methods */
 

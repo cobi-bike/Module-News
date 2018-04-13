@@ -66,7 +66,12 @@ function setLastCategory(value) {
 
 // Getter & Setter for if a news source is enabled
 function getSourceEnabled(sourceId) {
-  return JSON.parse(localStorage.getItem(sourceId));
+  var value = localStorage.getItem(sourceId);
+  if (value === null) {
+    return null;
+  } else {
+    return JSON.parse(value);
+  }
 }
 
 function setSourceEnabled(sourceId, value) {
