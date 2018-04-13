@@ -44,10 +44,10 @@ function populateSourcePicker() {
     option.value = categorySource;
     option.innerHTML = categorySources[i].name;
     // Set default value
-    if (localStorage.getItem(categorySource) === null) {
-      localStorage.setItem(categorySource, JSON.stringify(categorySources[i].defaultOn));
+    if (getSourceEnabled(categorySource) === null) {
+      setSourceEnabeld(categorySource, categorySources[i].defaultOn);
     }
-    option.selected = JSON.parse(localStorage.getItem(categorySource)) === true;
+    option.selected = getSourceEnabled(categorySource) === true;
     sourcePicker.appendChild(option);
   }
   $('select').material_select();
@@ -83,8 +83,8 @@ function initSourcePreferences() {
     for (var i = 0; i < sources[locale].length; i++) {
       for (var j = 0; j < sources[locale][i].sources.length; j++) {
         var categorySource = sources[locale][i].sources[j];
-        if (localStorage.getItem(categorySource.key) === null) {
-          localStorage.setItem(categorySource.key, JSON.stringify(categorySource.defaultOn === true));
+        if (getSourceEnabled(categorySource.key) === null) {
+          setSourceEnabled(categorySource.key, categorySource.defaultOn);
         }
       }
     }

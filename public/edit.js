@@ -54,6 +54,7 @@ function setJumpCategorySetting(value) {
   localStorage.setItem(localStorageKeyJumpCategory, JSON.stringify(value));
 }
 
+// Getter & Setter for last viewed category
 function getLastCategory() {
   var value = JSON.parse(localStorage.getItem(localStorageKeyCategory));
   return value;
@@ -61,4 +62,13 @@ function getLastCategory() {
 
 function setLastCategory(value) {
   localStorage.setItem(localStorageKeyCategory, JSON.stringify(value));
+}
+
+// Getter & Setter for if a news source is enabled
+function getSourceEnabled(sourceId) {
+  return JSON.parse(localStorage.getItem(sourceId));
+}
+
+function setSourceEnabled(sourceId, value) {
+  localStorage.setItem(sourceId, JSON.stringify(value));
 }
