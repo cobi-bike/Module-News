@@ -1,6 +1,6 @@
 # News DevKit module for COBI.bike
 
-The News DevKit module displays the latest news headlines and allows you to add them to your read later list.
+The DevKit module "News" displays the latest news headlines, based on the personal interest and allows you to add them to your read later list.
 It's part of a collection of Open Source [modules](https://cobi.bike/devkit) for the [COBI.bike](https://cobi.bike) system.
 
 <img src="screenshot.png" width="500px" alt="COBI.bike News module">
@@ -9,7 +9,7 @@ It's part of a collection of Open Source [modules](https://cobi.bike/devkit) for
 
 The quickest way to test the module via [Glitch.com](https://glitch.com):
 
-[<img src="https://cdn.cobi.bike/static/devkit-assets/github/open_demo_button.png" width="170px" alt="Open demo button">](https://glitch.com/edit/#!/import/github/cobi-bike/Module-News)
+[<img src="open_demo.png" width="250px" alt="Open demo button">](https://glitch.com/edit/#!/import/github/cobi-bike/Module-News)
 
 Glitch.com allows you to edit, host and fork Node.js applications for quick prototyping.
 Follow the [installation step 2 to 3](#installation-and-setup) and copy the environment variables to the: `.env` file on Glitch.com
