@@ -1,7 +1,7 @@
 # News DevKit module for COBI.bike
 
-The News DevKit module displays the latest news headlines and allows to add them to your read later list.
-Its part of a collection of Open Source [modules](https://cobi.bike/devkit) for the [COBI.bike](https://cobi.bike) system.
+The News DevKit module displays the latest news headlines and allows you to add them to your read later list.
+It's part of a collection of Open Source [modules](https://cobi.bike/devkit) for the [COBI.bike](https://cobi.bike) system.
 
 <img src="screenshot.png" width="500px" alt="COBI.bike News module">
 
@@ -16,7 +16,7 @@ Follow the [installation step 2 to 3](#installation-and-setup) and copy the envi
 
 ## Overview
 This module utilizes [Newsapi.org](https://newsapi.org/register) to poll the latest news from various news outlets.
-The Node.js backend acts as a Newsapi.org proxy and serves a static page to the client, which allows the user to switch between headlines, read it's description and add it to his read-later list.
+The Node.js backend acts as a Newsapi.org proxy and serves a static page to the client, which allows the user to switch between headlines, read its description and add it to his read-later list.
 
 ## Installation and Setup
 
