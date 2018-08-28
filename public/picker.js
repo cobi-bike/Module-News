@@ -1,6 +1,11 @@
 var categoryPicker = document.getElementById('categoryPicker');
 var sourcePicker = document.getElementById('sourcePicker');
 
+var supportedLngs = Object.keys(sources);
+var language = (supportedLngs.indexOf(i18next.language) > -1)
+    ? i18next.language
+    : supportedLngs[0];
+
 // Returns array of categories by language identifier (e.g. "de-DE")
 function getCategoriesByLanguage(language) {
   return sources[language.substr(0, 2)];
@@ -22,7 +27,7 @@ function didPickSources() {
 
 // Fills category picker with all categories in the user's language
 function populateCategoryPicker() {
-  var categories = getCategoriesByLanguage(i18next.language);
+  var categories = getCategoriesByLanguage(language);
   removeAllOptions(categoryPicker);
 
   for (var i = 0; i < categories.length; i++) {
@@ -36,7 +41,8 @@ function populateCategoryPicker() {
 
 // Fills news source picker with all sources for the selected category
 function populateSourcePicker() {
-  var categorySources = getCategoriesByLanguage(i18next.language)[categoryPicker.selectedIndex].sources;
+  var categorySources = getCategoriesByLanguage(language)[categoryPicker.selectedIndex].sources;
+
   removeAllOptions(sourcePicker);
   for (var i = 0; i < categorySources.length; i++) {
     var categorySource = categorySources[i].key;
@@ -111,7 +117,7 @@ function removeAllOptions(select) {
 
 // Removes element by id from select picker
 function sourceNameById(sourceId) {
-  var categories = getCategoriesByLanguage(i18next.language);
+  var categories = getCategoriesByLanguage(language);
   for (var k = 0; k < categories.length; k++) {
     var categorySources = categories[k].sources;
     for (var i = 0; i < categorySources.length; i++) {

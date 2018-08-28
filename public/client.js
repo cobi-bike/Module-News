@@ -48,7 +48,7 @@ function reloadContents() {
   setLastCategory(category);
   console.log('Reload Contents: ' + i18next.language + ' with category ' + category);
 
-  var localSources = getCategoriesByLanguage(i18next.language)[categoryPicker.selectedIndex].sources;
+  var localSources = getCategoriesByLanguage(language)[categoryPicker.selectedIndex].sources;
   var selectedSources = [];
 
   for (var i = 0; i < localSources.length; i++) {
