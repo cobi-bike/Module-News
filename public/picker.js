@@ -1,10 +1,8 @@
 var categoryPicker = document.getElementById('categoryPicker');
 var sourcePicker = document.getElementById('sourcePicker');
 
-var supportedLngs = Object.keys(sources);
-var language = (supportedLngs.indexOf(i18next.language) > -1)
-    ? i18next.language
-    : supportedLngs[0];
+// https://www.i18next.com/overview/api#languages
+var language = i18next.languages[0];
 
 // Returns array of categories by language identifier (e.g. "de-DE")
 function getCategoriesByLanguage(language) {
