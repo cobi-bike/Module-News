@@ -7,7 +7,7 @@ COBI.devkit.overrideThumbControllerMapping.write(true);
 COBI.app.clockVisible.write(false);
 
 // Initialize slider if in experience or overview mode (therefore not in edit menu)
-if (COBI.parameters.state() == COBI.state.experience || COBI.parameters.state() == COBI.state.overview) {
+if (COBI.parameters.context() == COBI.context.onRide || COBI.parameters.context() == COBI.context.offRide) {
   createSwiper();
   initSourcePreferences();
   populateCategoryPicker();

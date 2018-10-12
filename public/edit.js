@@ -3,8 +3,7 @@ var localStorageKeyJumpCategory = 'readlater-jumpcategory';
 var localStorageKeyCategory = 'category';
 
 // UI Switcher
-
-if (COBI.parameters.state() == COBI.state.edit) {
+if (COBI.parameters.context() == COBI.context.offRideSettings || COBI.parameters.context() == COBI.context.onRideSettings) {
   document.getElementById('experience').style.display = 'none';
 } else {
   document.getElementById('edit').style.display = 'none';
