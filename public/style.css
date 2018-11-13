@@ -26,7 +26,7 @@ body {
   top: auto !important;
   right: auto !important;
   bottom: 25%;
-  left:0%;  
+  left:0%;
 }
 
 /* Materialize blinking cursor fix on iOS */
@@ -54,7 +54,7 @@ input.select-dropdown {
     width: 100vw;
     height: 100vh;
     z-index:3;
-   
+
 }
 
 .swiper-slide {
@@ -84,7 +84,6 @@ input.select-dropdown {
 .content-app {
   position: absolute;
   left: 0;
-  top: 35vh;
   right: 0;
   text-align: center;
   font-familly: 'UniSansBold';
@@ -111,5 +110,5 @@ input.select-dropdown {
 
 
 p {
-  
+
 }
